@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% block cssjs %} {% include "jscss.html" %} {% endblock %} <!-- load scripts for js libraries and CSS -->
+  {% block dateblock %} {% endblock %} <!-- this is the html script for the date range-->
+  {% block selectize_block %} {% endblock %} <!-- this is the selctize sceipt for options -->
+  {% block timeseries_block%} {% endblock %} <!-- plotly timeseries block -->
+
+  <title>Home</title>
+  <nav class="navbar navbar-default"> <span class = "header-title">Humana IVR</span> </nav>
+  <div class = "row nl-header"><p> 6% conversion rate </p></div>
+</head>
+
+
+<body>
+  <br>
+  <form class="form-group" action = "/", method = "post" onsubmit = "return false"> 
+    <input type = "text" name = "daterange" id = "datechange_id"> 
+  </form>
+  <div id = 'dateheader'></div>
+
+  <br>
+  <div class="col-md-11" id="timeseries_plot" style="height:450px;"></div>
+</body>
+
+</html>
+

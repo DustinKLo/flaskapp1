@@ -1,0 +1,48 @@
+
+{% extends "header.html" %}
+
+
+{% block dateblock %}
+    <script type="text/javascript">
+    var today = new moment();
+    $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            locale: { format: 'MMMM D, YYYY' },
+            "startDate": today.clone().subtract(30,'day').format('MMMM D, YYYY'),
+            "endDate": today.clone().format('MMMM D, YYYY'),
+            "autoApply": true,
+            "alwaysShowCalendars": true,
+            "ranges": {
+                "Yesterday":[today.clone().subtract(1,'day').format('MMMM D, YYYY'), today.clone().format('MMMM D, YYYY')],
+                "Last 7 Days": [today.clone().subtract(7,'day').format('MMMM D, YYYY'), today.clone().format('MMMM D, YYYY')],
+                "Last 30 days": [today.clone().subtract(30,'day').format('MMMM D, YYYY'), today.clone().format('MMMM D, YYYY')],
+                "Current Month": [today.clone().startOf('month').format('MMMM D, YYYY'), today.clone().format('MMMM D, YYYY')],
+                "Last Month": [today.clone().subtract(1,'month').startOf('month').format('MMMM D, YYYY'), 
+                               today.clone().subtract(1,'month').endOf('month').format('MMMM D, YYYY')]
+            }
+        });
+    });
+    </script>
+{% endblock %}
+
+
+{% block selectize_block %}
+    <script>
+    $(document).ready(function() {
+        $("#tags").selectize({    
+            options: [
+                {value: "'woodland hills'", name: "Woodland Hills" },
+                {value: "'panorama city'", name: "Panorama City" },
+                {value: "'georgia'", name: "Georgia" },
+                {value: "'northern californa'", name: "Northern California" },
+                {value: "'florida'", name: 'Florida'},
+                {value: "'colorado'", name: 'Colorado'},
+                {value: "'hawaii'", name: 'Hawaii'},
+        ],
+        labelField: 'name',
+        searchField: ['name'],  
+        });
+    });
+    </script>
+{% endblock %}
+
